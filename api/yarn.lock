@@ -367,6 +367,10 @@ negotiator@0.6.2:
   version "0.6.2"
   resolved "https://artifactory.ops.ripple.com:443/artifactory/api/npm/ripple-npm/negotiator/-/negotiator-0.6.2.tgz#feacf7ccf525a77ae9634436a64883ffeca346fb"
 
+node-fetch@^2.6.0:
+  version "2.6.0"
+  resolved "https://artifactory.ops.ripple.com:443/artifactory/api/npm/ripple-npm/node-fetch/-/node-fetch-2.6.0.tgz#e633456386d4aa55863f676a7ab0daa8fdecb0fd"
+
 on-finished@~2.3.0:
   version "2.3.0"
   resolved "https://artifactory.ops.ripple.com:443/artifactory/api/npm/ripple-npm/on-finished/-/on-finished-2.3.0.tgz#20f1336481b083cd75337992a16971aa2d906947"
