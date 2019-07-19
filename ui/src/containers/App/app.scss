@@ -69,12 +69,6 @@ button {
   font-family: 'Jura', sans-serif;
 }
 
-.rate {
-  color: #999da2;
-  font-size: 12px;
-  @include medium;
-}
-
 // Loader
 .loader {
   display: flex;
@@ -150,7 +144,7 @@ button {
   }
 
   .transactions-icon-container {
-    position: relative;
+
     display: flex;
     width: 60px;
     height: 150px;
@@ -471,6 +465,12 @@ button {
     @include mono;
   }
 
+  .rate {
+    font-size: 56px;
+    line-height: 64px;
+    font-family: 'Jura', sans-serif;
+  }
+
   .button {
     width: 56px;
     height: 40px;
@@ -669,24 +669,24 @@ button {
   padding: 55px 0px 115px;
 
   .title {
-    padding: 8px;
-    color: #b1b5ba;
-    font-size: 12px;
+    padding: 10px 0px 30px;
+    color: $app-light;
+    font-size: 30px;
     line-height: 20px;
     @include bold;
   }
 
   .amount-container {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
 
-    .source-currency {
+    .loan-currency {
       padding-left: 8px;
-      color: #0f72e5;
-      font-size: 20px;
+      color: $app-turquoise;
+      font-size: 50px;
+      line-height: 50px;
       @include medium;
-      @include mono;
     }
   }
 
@@ -841,7 +841,7 @@ button {
   &.blue {
     width: 90px;
     height: 90px;
-    background-color: #6fa7e8;
+    background-color: $app-turquoise;
   }
 
   &.orange {

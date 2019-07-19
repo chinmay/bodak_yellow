@@ -10,14 +10,12 @@ import runsOnRippleIcon from "../../shared/images/runs_on_ripple_inverse.svg";
 import {
   LENDER_OR_BORROWER,
   LOAN_STEPS,
-  LOAN_CURRENCIES,
-  DEFAULT_CURRENCY
+  LOAN_CURRENCIES
 } from "../../shared/constants";
 import { clearForm, createLender, createBorrower, getLoans } from "./actions";
 import {
   LoanCurrencies,
   Keypad,
-  Loader,
   Navigation,
   SelectorButtons,
   Amount
@@ -101,23 +99,27 @@ class CreateLoan extends React.Component {
   };
 
   handleCreateLender = () => {
-    const { actions } = this.props;
+    const { actions, history } = this.props;
     const { amount, currency, rate } = this.state;
 
     this.setState({
       isLoading: true
     });
-    actions.createLender({ amount, currency, interest_rate: rate });
+    actions
+      .createLender({ amount, currency, interest_rate: rate })
+      .then(() => history.push("./match-loan"));
   };
 
   handleCreateBorrower = () => {
-    const { actions } = this.props;
+    const { actions, history } = this.props;
     const { amount, currency, rate } = this.state;
 
     this.setState({
       isLoading: true
     });
-    actions.createBorrower({ amount, currency, interest_rate: rate });
+    actions
+      .createBorrower({ amount, currency, interest_rate: rate })
+      .then(() => history.push("./match-loan"));
   };
 
   renderBody() {
@@ -245,7 +247,7 @@ class CreateLoan extends React.Component {
                 }
               >
                 {<div className="lds-ellipsis"></div>}
-                {"Submit"}
+                {"Find a Match!"}
               </button>
             </div>
           </div>

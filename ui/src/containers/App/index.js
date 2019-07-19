@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import CreateLoan from "./CreateLoan";
 import Loans from "./Loans";
 import UnderHood from "./UnderHood";
+import MatchLoan from "./MatchLoan";
 import { Splash } from "../../components";
 import "./app.css";
 
@@ -19,16 +20,16 @@ const App = () => (
           </div>
         )}
       />
-      {/* <Route
+      <Route
         exact
-        path="/execute-payment"
+        path="/match-loan"
         render={props => (
           <div className="demo-app-container">
-            <ExecutePayment {...props} />
+            <MatchLoan {...props} />
           </div>
         )}
       />
-      <Route
+      {/* <Route
         exact
         path="/payment-done"
         render={props => (

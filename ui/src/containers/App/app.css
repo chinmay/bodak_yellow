@@ -61,11 +61,6 @@ button {
   line-height: 64px;
   font-family: 'Jura', sans-serif; }
 
-.rate {
-  color: #999da2;
-  font-size: 12px;
-  font-weight: 500; }
-
 .loader {
   display: flex;
   align-items: center;
@@ -117,7 +112,6 @@ button {
   .navigation-container .failed {
     color: #ff9191; }
   .navigation-container .transactions-icon-container {
-    position: relative;
     display: flex;
     width: 60px;
     height: 150px;
@@ -372,6 +366,10 @@ button {
     line-height: 20px;
     font-weight: 500;
     font-family: 'Chathura', sans-serif; }
+  .amount-container .rate {
+    font-size: 56px;
+    line-height: 64px;
+    font-family: 'Jura', sans-serif; }
   .amount-container .button {
     width: 56px;
     height: 40px;
@@ -515,21 +513,21 @@ button {
   justify-content: center;
   padding: 55px 0px 115px; }
   .execute-loan-container .title {
-    padding: 8px;
-    color: #b1b5ba;
-    font-size: 12px;
+    padding: 10px 0px 30px;
+    color: #FEFCFD;
+    font-size: 30px;
     line-height: 20px;
     font-weight: 700; }
   .execute-loan-container .amount-container {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center; }
-    .execute-loan-container .amount-container .source-currency {
+    .execute-loan-container .amount-container .loan-currency {
       padding-left: 8px;
-      color: #0f72e5;
-      font-size: 20px;
-      font-weight: 500;
-      font-family: 'Chathura', sans-serif; }
+      color: #52D1DC;
+      font-size: 50px;
+      line-height: 50px;
+      font-weight: 500; }
   .execute-loan-container .down-arrow {
     animation: moveDown 1.3s infinite ease-in-out; }
   .execute-loan-container .recipient .recipient-name {
@@ -636,7 +634,7 @@ button {
   .pulse-circle.blue {
     width: 90px;
     height: 90px;
-    background-color: #6fa7e8; }
+    background-color: #52D1DC; }
   .pulse-circle.orange {
     top: 45px;
     width: 48px;

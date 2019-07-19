@@ -27,6 +27,7 @@ const appReducer = (state = initialState, action) => {
         serverError: true,
         serverErrorMsg: action.data
       };
+
     case actionTypes.CREATE_LENDER_START:
       return { ...state, loading: true };
     case actionTypes.CREATE_LENDER_DONE:
@@ -36,6 +37,34 @@ const appReducer = (state = initialState, action) => {
         serverError: false
       };
     case actionTypes.CREATE_LENDER_FAIL:
+      return {
+        ...state,
+        serverError: true,
+        serverErrorMsg: action.data
+      };
+    case actionTypes.MATCH_LENDERS_START:
+      return { ...state, loading: true };
+    case actionTypes.MATCH_LENDERS_DONE:
+      return {
+        ...state,
+        loan: action.data,
+        serverError: false
+      };
+    case actionTypes.MATCH_LENDERS_FAIL:
+      return {
+        ...state,
+        serverError: true,
+        serverErrorMsg: action.data
+      };
+    case actionTypes.MATCH_BORROWERS_START:
+      return { ...state, loading: true };
+    case actionTypes.MATCH_BORROWERS_DONE:
+      return {
+        ...state,
+        loan: action.data,
+        serverError: false
+      };
+    case actionTypes.MATCH_BORROWERS_FAIL:
       return {
         ...state,
         serverError: true,

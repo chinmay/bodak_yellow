@@ -32,7 +32,7 @@
   "select_method": "Select delivery method",
   "send_payment": "Send payment",
   "sender": "Sender",
-  "sending_payment": "Sending payment",
+  "finding_match": "Finding a Match...",
   "sgd": "Singaporean Dollar",
   "slide_to_send": "Slide to Send",
   "standard": "Wire Transfer",
