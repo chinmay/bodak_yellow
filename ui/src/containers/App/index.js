@@ -33,11 +33,7 @@ const App = () => (
       <Route
         exact
         path="/loan-done"
-        render={props => (
-          <div className="demo-app-container">
-            <LoanDone {...props} />
-          </div>
-        )}
+        render={props => <LoanDone {...props} />}
       />
       {/* <Route
         exact
