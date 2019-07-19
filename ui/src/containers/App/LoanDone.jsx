@@ -15,35 +15,6 @@ class LoanDone extends React.Component {
   render() {
     const { lender, borrower, loan, t } = this.props;
 
-    const request = {
-      Account: "rBfd8fpG98bYB4dwHY1GSxj4dRo5ayujnx",
-      Fee: "12",
-      Flags: 2147483648,
-      LastLedgerSequence: 21142055,
-      Sequence: 1,
-      SignerEntries: [
-        {
-          SignerEntry: {
-            Account: "rBXPBLaNoMhRnXGsS56mGU4C64b5PcyqEw",
-            SignerWeight: 1
-          }
-        },
-        {
-          SignerEntry: {
-            Account: "rn2hJyCqPL7dcYwNZvNswJ8YZ6vw7i2snF",
-            SignerWeight: 1
-          }
-        },
-        {
-          SignerEntry: {
-            Account: "r4Ek36hN1GbA9MciWcJFmgiLFgWuPD3Rxb",
-            SignerWeight: 1
-          }
-        }
-      ],
-      SignerQuorum: 2
-    };
-
     return (
       <div>
         <SyntaxHighlighter
@@ -58,7 +29,7 @@ class LoanDone extends React.Component {
           }}
           language="json"
         >
-          {JSON.stringify(request, null, "\t")}
+          {JSON.stringify(loan, null, "\t")}
         </SyntaxHighlighter>
       </div>
     );
