@@ -104,6 +104,9 @@ class CreateLoan extends React.Component {
     const { actions } = this.props;
     const { amount, currency, rate } = this.state;
 
+    this.setState({
+      isLoading: true
+    });
     actions.createLender({ amount, currency, interest_rate: rate });
   };
 
@@ -111,14 +114,18 @@ class CreateLoan extends React.Component {
     const { actions } = this.props;
     const { amount, currency, rate } = this.state;
 
+    this.setState({
+      isLoading: true
+    });
     actions.createBorrower({ amount, currency, interest_rate: rate });
   };
 
   renderBody() {
-    const { t } = this.props;
+    const { t, borrower, lender } = this.props;
     const { currency } = this.state;
     const {
       lenderOrBorrower,
+      isLoading,
       currentStep,
       amount,
       rate,
@@ -226,7 +233,7 @@ class CreateLoan extends React.Component {
               <img
                 src={runsOnRippleIcon}
                 alt="Runs on Ripple"
-                style={{ marginBottom: "16px" }}
+                style={{ marginBottom: "20px" }}
               />
 
               <button
@@ -237,7 +244,8 @@ class CreateLoan extends React.Component {
                     : this.handleCreateBorrower
                 }
               >
-                {`Submit`}
+                {<div className="lds-ellipsis"></div>}
+                {"Submit"}
               </button>
             </div>
           </div>
@@ -253,14 +261,6 @@ class CreateLoan extends React.Component {
     const hasExecutedLoans =
       transactions.length > 0 &&
       moment().diff(moment(transactions[0].payment_timestamp), "minutes") < 60;
-
-    if (isLoading) {
-      return (
-        <div className="full-screen">
-          <Loader />
-        </div>
-      );
-    }
 
     return (
       <React.Fragment>
@@ -293,8 +293,8 @@ CreateLoan.defaultProps = {
 
 export default connect(
   state => ({
-    transactions: state.app.transactions,
-    recipients: state.app.recipients
+    lender: state.app.lender,
+    borrower: state.app.borrower
   }),
   dispatch => ({
     actions: bindActionCreators(

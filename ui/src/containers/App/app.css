@@ -149,6 +149,14 @@ button {
   padding: 0px 16px;
   text-align: center; }
 
+.submit-button-container {
+  position: absolute;
+  bottom: 150px;
+  width: 100%;
+  max-width: 500px;
+  padding: 0px 16px;
+  text-align: center; }
+
 .selector-buttons-container {
   display: flex;
   width: 100%;
@@ -164,7 +172,7 @@ button {
     border-radius: 2px;
     color: #848C8E;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 18px;
     text-align: center;
     font-weight: 700; }
@@ -203,7 +211,7 @@ button {
   width: 100%;
   padding: 0px 16px;
   color: #FEFCFD;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 20px;
   font-weight: 700; }
 
@@ -233,7 +241,7 @@ button {
       transition: transform 0.2 s ease-in-out; }
 
 .recipients-container,
-.dest-currencies-container {
+.currencies-container {
   position: absolute;
   bottom: 0;
   overflow: scroll;
@@ -241,15 +249,12 @@ button {
   max-width: 500px;
   height: 50%;
   max-height: 600px;
-  border-top: 1px solid #cdced2;
+  border-top: 1px solid #3b475b;
   margin: 0 auto;
-  background-color: #fff;
-  border-radius: 2px;
-  -webkit-box-shadow: 2px 7px 25px 4px #cdced2;
-  -moz-box-shadow: 2px 7px 25px 4px #cdced2;
-  box-shadow: 2px 7px 25px 4px #cdced2; }
+  background-color: #FEFCFD;
+  border-radius: 2px; }
 
-.dest-currencies-container {
+.currencies-container {
   height: 0px; }
 
 .recipients,
@@ -318,11 +323,8 @@ button {
 .recipient-name,
 .recipient-currency,
 .dest-currency {
+  font-size: 20px;
   font-weight: 500; }
-
-.dest-currency,
-.recipient-currency {
-  font-family: 'Chathura', sans-serif; }
 
 .dest-currency-desc {
   font-weight: 400; }
@@ -335,7 +337,8 @@ button {
   justify-content: space-between;
   padding: 16px;
   border-bottom: 1px solid #e2e2e2;
-  font-size: 16px;
+  font-size: 20px;
+  color: #3b475b;
   font-weight: 700; }
   .recipient-row:active,
   .dest-currencies-row:active {
@@ -450,8 +453,7 @@ button {
       line-height: 36px; }
     .loan-info-container .recipient-amount .currency {
       font-size: 20px;
-      font-weight: 500;
-      font-family: 'Chathura', sans-serif; }
+      font-weight: 500; }
   .loan-info-container .fee-container {
     display: flex;
     height: 100px;
@@ -556,8 +558,7 @@ button {
     .execute-loan-container .destination-amount-container .destination-currency {
       padding-left: 8px;
       font-size: 20px;
-      font-weight: 500;
-      font-family: 'Chathura', sans-serif; }
+      font-weight: 500; }
 
 .transaction-container {
   display: flex;
@@ -729,3 +730,52 @@ button {
 .video {
   width: 100%;
   height: 50%; }
+
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 10px;
+  height: 10px; }
+
+.lds-ellipsis div {
+  position: absolute;
+  top: 27px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #fff;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0); }
+
+.lds-ellipsis div:nth-child(1) {
+  left: 6px;
+  animation: lds-ellipsis1 0.6s infinite; }
+
+.lds-ellipsis div:nth-child(2) {
+  left: 6px;
+  animation: lds-ellipsis2 0.6s infinite; }
+
+.lds-ellipsis div:nth-child(3) {
+  left: 26px;
+  animation: lds-ellipsis2 0.6s infinite; }
+
+.lds-ellipsis div:nth-child(4) {
+  left: 45px;
+  animation: lds-ellipsis3 0.6s infinite; }
+
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0); }
+  100% {
+    transform: scale(1); } }
+
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1); }
+  100% {
+    transform: scale(0); } }
+
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0); }
+  100% {
+    transform: translate(19px, 0); } }

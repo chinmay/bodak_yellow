@@ -18,7 +18,7 @@ const appReducer = (state = initialState, action) => {
     case actionTypes.CREATE_BORROWER_DONE:
       return {
         ...state,
-        quoteData: action.data,
+        borrower: action.data,
         serverError: false
       };
     case actionTypes.CREATE_BORROWER_FAIL:
@@ -32,7 +32,7 @@ const appReducer = (state = initialState, action) => {
     case actionTypes.CREATE_LENDER_DONE:
       return {
         ...state,
-        quoteData: action.data,
+        lender: action.data,
         serverError: false
       };
     case actionTypes.CREATE_LENDER_FAIL:

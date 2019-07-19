@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import deleteIcon from '../shared/images/delete.svg';
+import React from "react";
+import PropTypes from "prop-types";
+import deleteIcon from "../shared/images/delete.svg";
 
 const Key = props => {
   const { keyValue, onClick } = props;
@@ -28,16 +28,17 @@ class KeyPad extends React.PureComponent {
     const { onUpdateAmount, amount } = this.props;
     let updatedAmount;
 
-    if (amount.charAt(0) === '0') {
-      const tempAmount = amount.replace('.', '');
+    if (amount.charAt(0) === "0") {
+      const tempAmount = amount.replace(".", "");
 
       updatedAmount = `${tempAmount.charAt(1)}.${tempAmount.charAt(2) + value}`;
-    } else if (amount.length === 5) {
+    } else if (amount.length === 10) {
       updatedAmount = amount;
     } else {
-      const tempAmount = amount.replace('.', '');
+      const tempAmount = amount.replace(".", "");
 
-      updatedAmount = `${tempAmount.slice(0, -1)}.${tempAmount.slice(-1) + value}`;
+      updatedAmount = `${tempAmount.slice(0, -1)}.${tempAmount.slice(-1) +
+        value}`;
     }
 
     onUpdateAmount(updatedAmount);
@@ -45,11 +46,11 @@ class KeyPad extends React.PureComponent {
 
   handleDeleteAmount = () => {
     const { onUpdateAmount, amount } = this.props;
-    const tempAmount = amount.replace('.', '');
+    const tempAmount = amount.replace(".", "");
     let updatedAmount;
 
     if (tempAmount.length === 3) {
-      if (tempAmount.charAt(0) === '0') {
+      if (tempAmount.charAt(0) === "0") {
         updatedAmount = `0.0${tempAmount.slice(-2)}`;
       }
       updatedAmount = `0.${tempAmount.slice(0, 2)}`;
@@ -83,7 +84,10 @@ class KeyPad extends React.PureComponent {
         <div className="keypad-row">
           <Key keyValue="" onClick={this.handleUpdateAmount} />
           <Key keyValue="0" onClick={this.handleUpdateAmount} />
-          <Key keyValue={<img src={deleteIcon} alt="delete" />} onClick={this.handleDeleteAmount} />
+          <Key
+            keyValue={<img src={deleteIcon} alt="delete" />}
+            onClick={this.handleDeleteAmount}
+          />
         </div>
       </div>
     );

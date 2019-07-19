@@ -15,7 +15,7 @@ const DestinationCurrencyRow = props => {
     >
       <p className="dest-currency">{destinationCurrency}</p>
 
-      <p className="dest-currency-desc text-grey">
+      <p className="dest-currency-desc">
         {t(destinationCurrency.toLowerCase())}
       </p>
     </div>
@@ -32,9 +32,8 @@ const LoanCurrencies = props => {
   const { t, onSelectLoanCurrency, LoanCurrencies } = props;
 
   return (
-    <div className="dest-currencies-container">
-      <p className="recipient-title">{t("dest_currencies_title")}</p>
-      <div className="dest-currencies-list">
+    <div className="currencies-container">
+      <div className="currencies-list">
         {LoanCurrencies.map((destinationCurrency, index) => (
           <DestinationCurrencyRow
             key={destinationCurrency}

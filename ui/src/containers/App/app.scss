@@ -191,6 +191,15 @@ button {
   text-align: center;
 }
 
+.submit-button-container {
+  position: absolute;
+  bottom: 150px;
+  width: 100%;
+  max-width: 500px;
+  padding: 0px 16px;
+  text-align: center;
+}
+
 // Selector Buttons
 .selector-buttons-container {
   display: flex;
@@ -208,7 +217,7 @@ button {
     border-radius: 2px;
     color: #848C8E;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 18px;
     text-align: center;
     @include bold;
@@ -262,7 +271,7 @@ button {
   width: 100%;
   padding: 0px 16px;
   color: $app-light;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 20px;
   @include bold;
 }
@@ -302,7 +311,7 @@ button {
 
 // Recipient section
 .recipients-container,
-.dest-currencies-container {
+.currencies-container {
   position: absolute;
   bottom: 0;
   overflow: scroll;
@@ -310,16 +319,13 @@ button {
   max-width: 500px;
   height: 50%;
   max-height: 600px;
-  border-top: 1px solid #cdced2;
+  border-top: 1px solid $app-background;
   margin: 0 auto;
-  background-color: #fff;
+  background-color: $app-light;
   border-radius: 2px;
-  -webkit-box-shadow: 2px 7px 25px 4px rgba(205, 206, 210, 1);
-  -moz-box-shadow: 2px 7px 25px 4px rgba(205, 206, 210, 1);
-  box-shadow: 2px 7px 25px 4px rgba(205, 206, 210, 1);
 }
 
-.dest-currencies-container {
+.currencies-container {
   height: 0px;
 }
 
@@ -404,12 +410,8 @@ button {
 .recipient-name,
 .recipient-currency,
 .dest-currency {
+  font-size: 20px;
   @include medium;
-}
-
-.dest-currency,
-.recipient-currency {
-  @include mono;
 }
 
 .dest-currency-desc {
@@ -424,7 +426,8 @@ button {
   justify-content: space-between;
   padding: 16px;
   border-bottom: 1px solid #e2e2e2;
-  font-size: 16px;
+  font-size: 20px;
+  color: $app-background;
   @include bold;
 
   &:active {
@@ -586,7 +589,6 @@ button {
     .currency {
       font-size: 20px;
       @include medium;
-      @include mono;
     }
   }
 
@@ -730,7 +732,6 @@ button {
       padding-left: 8px;
       font-size: 20px;
       @include medium;
-      @include mono;
     }
   }
 }
@@ -971,3 +972,61 @@ button {
   width: 100%;
   height: 50%;
 }
+
+//Loader
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 10px;
+  height: 10px;
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 27px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #fff;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 6px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 6px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 26px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 45px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(19px, 0);
+  }
+}
+

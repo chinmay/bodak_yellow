@@ -1,36 +1,46 @@
 @keyframes black-10-fade {
   from {
-    background-color: #f5f7f9; }
+    background-color: #f5f7f9;
+  }
   to {
-    background-color: #fff; } }
+    background-color: #fff;
+  }
+}
 
 body,
 input {
   padding: 0px;
   margin: 0px;
   background-color: #fff;
-  font-family: 'Rajdhani', sans-serif;
+  font-family: "Rajdhani", sans-serif;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
-  font-style: normal;
+  font-style: bold;
   letter-spacing: 0.5px;
-  line-height: 24px; }
+  line-height: 24px;
+}
 
 button {
-  font-family: 'Rajdhani', sans-serif; }
+  font-family: "Rajdhani", sans-serif;
+  font-style: bold;
+}
 
 .clear {
-  clear: both; }
+  clear: both;
+}
 
 * {
-  outline: none !important; }
+  outline: none !important;
+}
 
 svg.react-stockchart {
   z-index: auto !important;
-  left: 0px; }
+  left: 0px;
+}
 
 div.react-stockchart div {
-  z-index: auto !important; }
+  z-index: auto !important;
+}
 
 .async-component-error {
   margin: 0px auto;
@@ -38,4 +48,5 @@ div.react-stockchart div {
   font-size: 16px;
   line-height: 24px;
   text-align: center;
-  font-weight: 700; }
+  font-weight: 700;
+}
