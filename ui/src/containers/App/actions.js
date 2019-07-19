@@ -2,7 +2,7 @@ import axios from "axios";
 import * as actionTypes from "./actionTypes";
 
 export const createLender = params => dispatch => {
-  const url = `http://localhost:8080/api/lend`;
+  const url = `/api/lend`;
   dispatch({ type: actionTypes.CREATE_LENDER_START });
 
   return axios
@@ -20,7 +20,7 @@ export const createLender = params => dispatch => {
 };
 
 export const createBorrower = params => dispatch => {
-  const url = `http://localhost:8080/api/borrow`;
+  const url = `/api/borrow`;
   dispatch({ type: actionTypes.CREATE_BORROWER_START });
 
   return axios
@@ -38,7 +38,7 @@ export const createBorrower = params => dispatch => {
 };
 
 export const getLoans = params => dispatch => {
-  const url = `http://localhost:8080/api/create_borrower`;
+  const url = `/api/`;
   dispatch({ type: actionTypes.GET_LOANS_START });
 
   return axios

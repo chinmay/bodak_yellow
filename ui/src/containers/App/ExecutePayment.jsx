@@ -55,7 +55,7 @@ class ExecutePayment extends React.Component {
     ).toLocaleString();
     const destinationCurrency = contractQuoted.destination_currency;
     const sourceAmount = Number(contractQuoted.source_amount).toFixed(2);
-    const sourceCurrency = contractQuoted.source_currency;
+    const sourceCurrency = contractQuoted.DEFAULT_CURRENCY;
     const fxRate = Number(contractQuoted.details[0].fx.rate).toLocaleString();
 
     const recipientInfo = recipients.find(
@@ -71,7 +71,7 @@ class ExecutePayment extends React.Component {
     }
 
     return (
-      <div className="execute-payment-container">
+      <div className="execute-loan-container">
         <p className="title">{t("sending_payment").toUpperCase()}</p>
         <div className="amount-er">
           <p className="amount">{sourceAmount}</p>
@@ -113,7 +113,7 @@ class ExecutePayment extends React.Component {
           <p className="destination-currency">{destinationCurrency}</p>
         </div>
 
-        <p className="fx-rate">{`1 ${sourceCurrency} = ${fxRate} ${destinationCurrency}`}</p>
+        <p className="rate">{`1 ${sourceCurrency} = ${fxRate} ${destinationCurrency}`}</p>
 
         <img
           style={{ marginTop: "225px" }}

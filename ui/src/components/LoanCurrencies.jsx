@@ -3,13 +3,13 @@ import PropTypes from "prop-types";
 import { translate } from "react-i18next";
 
 const DestinationCurrencyRow = props => {
-  const { onSelectSendingCurrency, destinationCurrency, t } = props;
+  const { onSelectLoanCurrency, destinationCurrency, t } = props;
 
   return (
     <div
       className="dest-currencies-row"
-      onClick={() => onSelectSendingCurrency(destinationCurrency)}
-      onKeyDown={() => onSelectSendingCurrency(destinationCurrency)}
+      onClick={() => onSelectLoanCurrency(destinationCurrency)}
+      onKeyDown={() => onSelectLoanCurrency(destinationCurrency)}
       role="button"
       tabIndex="0"
     >
@@ -23,13 +23,13 @@ const DestinationCurrencyRow = props => {
 };
 
 DestinationCurrencyRow.propTypes = {
-  onSelectSendingCurrency: PropTypes.func.isRequired,
+  onSelectLoanCurrency: PropTypes.func.isRequired,
   destinationCurrency: PropTypes.string.isRequired,
   t: PropTypes.func.isRequired
 };
 
 const LoanCurrencies = props => {
-  const { t, onSelectSendingCurrency, LoanCurrencies } = props;
+  const { t, onSelectLoanCurrency, LoanCurrencies } = props;
 
   return (
     <div className="dest-currencies-container">
@@ -38,7 +38,7 @@ const LoanCurrencies = props => {
         {LoanCurrencies.map((destinationCurrency, index) => (
           <DestinationCurrencyRow
             key={destinationCurrency}
-            onSelectSendingCurrency={onSelectSendingCurrency}
+            onSelectLoanCurrency={onSelectLoanCurrency}
             destinationCurrency={destinationCurrency}
             t={t}
           />
@@ -50,7 +50,7 @@ const LoanCurrencies = props => {
 
 LoanCurrencies.propTypes = {
   t: PropTypes.func.isRequired,
-  onSelectSendingCurrency: PropTypes.func.isRequired,
+  onSelectLoanCurrency: PropTypes.func.isRequired,
   LoanCurrencies: PropTypes.array.isRequired
 };
 

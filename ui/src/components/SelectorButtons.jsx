@@ -5,7 +5,7 @@ import { LENDER_OR_BORROWER } from "../shared/constants";
 
 class SelectorButtons extends React.PureComponent {
   render() {
-    const { lenderOrBorrower, onUpdateAmountType, t } = this.props;
+    const { lenderOrBorrower, onUpdateLenderBorrower, t } = this.props;
 
     return (
       <div className="selector-buttons-container">
@@ -13,7 +13,7 @@ class SelectorButtons extends React.PureComponent {
           className={`selector-button ${
             lenderOrBorrower === LENDER_OR_BORROWER.LENDER ? "selected" : ""
           }`}
-          onClick={onUpdateAmountType}
+          onClick={onUpdateLenderBorrower}
         >
           {t("will_lend").toUpperCase()}
         </button>
@@ -22,7 +22,7 @@ class SelectorButtons extends React.PureComponent {
           className={`selector-button ${
             lenderOrBorrower === LENDER_OR_BORROWER.BORROWER ? "selected" : ""
           }`}
-          onClick={onUpdateAmountType}
+          onClick={onUpdateLenderBorrower}
         >
           {t("will_borrow").toUpperCase()}
         </button>
@@ -33,7 +33,7 @@ class SelectorButtons extends React.PureComponent {
 
 SelectorButtons.propTypes = {
   lenderOrBorrower: PropTypes.string.isRequired,
-  onUpdateAmountType: PropTypes.func.isRequired,
+  onUpdateLenderBorrower: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired
 };
 

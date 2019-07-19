@@ -104,7 +104,7 @@ const LoansList = ({ onSelectTransaction, recipients, transactions }) => {
             const contractQuoted = transaction.contract_quoted;
             const destinationCurrency = contractQuoted.destination_currency;
             const sourceAmount = contractQuoted.source_amount;
-            const sourceCurrency = contractQuoted.source_currency;
+            const sourceCurrency = contractQuoted.DEFAULT_CURRENCY;
             const isProcessing =
               moment(transaction.payment_timestamp).format() !==
                 "Invalid date" &&

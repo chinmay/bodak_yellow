@@ -5,14 +5,15 @@ import { translate } from "react-i18next";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { CSSTransition } from "react-transition-group";
+import runsOnRippleIcon from "../../shared/images/runs_on_ripple_inverse.svg";
 
 import {
   LENDER_OR_BORROWER,
   LOAN_STEPS,
-  DESTINATION_CURRENCIES,
-  SOURCE_CURRENCY
+  LOAN_CURRENCIES,
+  DEFAULT_CURRENCY
 } from "../../shared/constants";
-import { clearForm, getLoans } from "./actions";
+import { clearForm, createLender, createBorrower, getLoans } from "./actions";
 import {
   LoanCurrencies,
   Keypad,
@@ -21,7 +22,6 @@ import {
   SelectorButtons,
   Amount
 } from "../../components";
-import ViewQuote from "./ViewQuote";
 import Rate from "../../components/Rate";
 
 class CreateLoan extends React.Component {
@@ -33,8 +33,8 @@ class CreateLoan extends React.Component {
       isLoading: false,
       lenderOrBorrower: LENDER_OR_BORROWER.LENDER,
       amount: "0.00",
-      currency: "",
-      rate: "0",
+      currency: "XRP",
+      rate: "0.00",
       showLoanCurrencies: false
     };
   }
@@ -64,23 +64,25 @@ class CreateLoan extends React.Component {
   handleUpdateLenderBorrower = () => {
     const { lenderOrBorrower } = this.state;
 
-    const newAmountType =
+    const newType =
       lenderOrBorrower === LENDER_OR_BORROWER.LENDER
         ? LENDER_OR_BORROWER.BORROWER
         : LENDER_OR_BORROWER.LENDER;
 
     this.setState({
-      lenderOrBorrower: newAmountType,
-      rate:
-        newAmountType === LENDER_OR_BORROWER.LENDER
-          ? SOURCE_CURRENCY
-          : DESTINATION_CURRENCIES[0]
+      lenderOrBorrower: newType
     });
   };
 
   handleUpdateAmount = amount => {
     this.setState({
       amount
+    });
+  };
+
+  handleUpdateRate = rate => {
+    this.setState({
+      rate
     });
   };
 
@@ -98,12 +100,26 @@ class CreateLoan extends React.Component {
     });
   };
 
+  handleCreateLender = () => {
+    const { actions } = this.props;
+    const { amount, currency, rate } = this.state;
+
+    actions.createLender({ amount, currency, interest_rate: rate });
+  };
+
+  handleCreateBorrower = () => {
+    const { actions } = this.props;
+    const { amount, currency, rate } = this.state;
+
+    actions.createBorrower({ amount, currency, interest_rate: rate });
+  };
+
   renderBody() {
-    const { t, recipients } = this.props;
+    const { t } = this.props;
+    const { currency } = this.state;
     const {
       lenderOrBorrower,
       currentStep,
-      recipient,
       amount,
       rate,
       showLoanCurrencies
@@ -112,20 +128,28 @@ class CreateLoan extends React.Component {
     switch (currentStep) {
       case LOAN_STEPS[0]:
         return (
-          <div className="payment-container" style={{ paddingTop: "78px" }}>
+          <div className="loan-container">
             <SelectorButtons
               lenderOrBorrower={lenderOrBorrower}
-              onUpdateAmountType={this.handleUpdateLenderBorrower}
+              onUpdateLenderBorrower={this.handleUpdateLenderBorrower}
             />
 
-            <Amount
-              lenderOrBorrower={lenderOrBorrower}
-              onShowLoanCurrencies={this.handleShowLoanCurrencies}
-              amount={amount}
-              rate={rate}
-              showTitle
-              t={t}
-            />
+            <CSSTransition
+              in={currentStep}
+              enter
+              exit
+              timeout={500}
+              classNames="inputs"
+            >
+              <Amount
+                lenderOrBorrower={lenderOrBorrower}
+                loanCurrency={currency}
+                onShowLoanCurrencies={this.handleShowLoanCurrencies}
+                amount={amount}
+                showTitle
+                t={t}
+              />
+            </CSSTransition>
 
             <Keypad amount={amount} onUpdateAmount={this.handleUpdateAmount} />
 
@@ -145,18 +169,31 @@ class CreateLoan extends React.Component {
               classNames="currencies"
             >
               <LoanCurrencies
-                onSelectSendingCurrency={this.handleSelectCurrency}
-                LoanCurrencies={DESTINATION_CURRENCIES}
+                onSelectLoanCurrency={this.handleSelectCurrency}
+                LoanCurrencies={LOAN_CURRENCIES}
               />
             </CSSTransition>
           </div>
         );
       case LOAN_STEPS[1]:
         return (
-          <div className="payment-container" style={{ paddingTop: "30px" }}>
-            <Rate rate={rate} showTitle t={t} />
+          <div className="loan-container">
+            <SelectorButtons
+              lenderOrBorrower={lenderOrBorrower}
+              onUpdateLenderBorrower={this.handleUpdateLenderBorrower}
+            />
 
-            <Keypad amount={amount} onUpdateAmount={this.handleUpdateAmount} />
+            <CSSTransition
+              in={currentStep}
+              enter
+              exit
+              timeout={500}
+              classNames="currencies"
+            >
+              <Rate rate={rate} showTitle t={t} />
+            </CSSTransition>
+
+            <Keypad amount={rate} onUpdateAmount={this.handleUpdateRate} />
 
             {rate !== "0.00" && (
               <div className="button-container">
@@ -167,14 +204,44 @@ class CreateLoan extends React.Component {
             )}
           </div>
         );
-      //   case LOAN_STEPS[2]:
-      //     return (
-      //       <div className="payment-container" style={{ paddingTop: "30px" }}>
-      //         <Amount amount={amount} rate={rate} t={t} showTitle />
+      case LOAN_STEPS[2]:
+        return (
+          <div className="loan-container">
+            <SelectorButtons
+              lenderOrBorrower={lenderOrBorrower}
+              onUpdateLenderBorrower={this.handleUpdateLenderBorrower}
+            />
 
-      //         <ViewQuote amount={amount} recipient={recipient} rate={rate} />
-      //       </div>
-      //     );
+            <Amount
+              lenderOrBorrower={lenderOrBorrower}
+              loanCurrency={currency}
+              amount={amount}
+              showTitle
+              t={t}
+            />
+
+            <Rate rate={rate} showTitle t={t} />
+
+            <div className="button-container">
+              <img
+                src={runsOnRippleIcon}
+                alt="Runs on Ripple"
+                style={{ marginBottom: "16px" }}
+              />
+
+              <button
+                className="button"
+                onClick={
+                  lenderOrBorrower === LENDER_OR_BORROWER.LENDER
+                    ? this.handleCreateLender
+                    : this.handleCreateBorrower
+                }
+              >
+                {`Submit`}
+              </button>
+            </div>
+          </div>
+        );
       default:
         return <React.Fragment />;
     }
@@ -214,8 +281,8 @@ CreateLoan.propTypes = {
   transactions: PropTypes.array,
   actions: PropTypes.shape({
     clearForm: PropTypes.func,
-    executePayment: PropTypes.func,
-    getRecipients: PropTypes.func,
+    createLender: PropTypes.func,
+    createBorrower: PropTypes.func,
     getLoans: PropTypes.func
   }).isRequired
 };
@@ -233,6 +300,8 @@ export default connect(
     actions: bindActionCreators(
       {
         clearForm,
+        createLender,
+        createBorrower,
         getLoans
       },
       dispatch

@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { translate } from "react-i18next";
-import { SOURCE_CURRENCY } from "../shared/constants";
+import { DEFAULT_CURRENCY } from "../shared/constants";
 
 const Rate = props => {
-  const { t, sendingCurrency, rate, showTitle } = props;
+  const { t, loanCurrency, rate, showTitle } = props;
 
   return (
     <React.Fragment>
@@ -17,6 +17,8 @@ const Rate = props => {
             maximumFractionDigits: 2
           })}
         </p>
+
+        <p className="currency">%</p>
       </section>
     </React.Fragment>
   );
@@ -27,14 +29,14 @@ Rate.propTypes = {
   t: PropTypes.func.isRequired,
   onShowLoanCurrencies: PropTypes.func,
   amount: PropTypes.string.isRequired,
-  sendingCurrency: PropTypes.string,
+  loanCurrency: PropTypes.string,
   showTitle: PropTypes.bool
 };
 
 Rate.defaultProps = {
   amountType: "",
   onShowLoanCurrencies: () => {},
-  sendingCurrency: SOURCE_CURRENCY,
+  loanCurrency: DEFAULT_CURRENCY,
   showTitle: false
 };
 

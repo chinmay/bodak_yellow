@@ -20,7 +20,7 @@
   "payment_error": "Something went wrong",
   "payment_processing": "Payment Processing",
   "payment_sent": "Payment Sent",
-  "rate": "Rate",
+  "rate": "APR",
   "received": "Received",
   "receiver": "Receiver",
   "receiving_currency": "Receiving Currency",
@@ -39,8 +39,10 @@
   "start": "Start Demo",
   "transaction_history": "Transaction History",
   "try_again": "Try Again",
+  "usd": "US Dollars",
   "will_borrow": "I want to borrow",
   "will_lend": "I want to lend",
+  "xrp": "XRP",
   "you_are_sending": "You are sending",
   "you_sent": "You sent"
 }

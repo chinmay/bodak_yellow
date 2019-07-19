@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { translate } from "react-i18next";
-import { SOURCE_CURRENCY } from "../shared/constants";
+import { DEFAULT_CURRENCY } from "../shared/constants";
 
 const Amount = props => {
-  const { t, sendingCurrency, amount, onShowLoanCurrencies, showTitle } = props;
+  const { t, loanCurrency, amount, onShowLoanCurrencies, showTitle } = props;
 
   return (
     <React.Fragment>
@@ -20,7 +20,7 @@ const Amount = props => {
           })}
         </p>
         <button className="button currency" onClick={onShowLoanCurrencies}>
-          {sendingCurrency}
+          {loanCurrency}
         </button>
       </section>
     </React.Fragment>
@@ -32,14 +32,14 @@ Amount.propTypes = {
   t: PropTypes.func.isRequired,
   onShowLoanCurrencies: PropTypes.func,
   amount: PropTypes.string.isRequired,
-  sendingCurrency: PropTypes.string,
+  loanCurrency: PropTypes.string,
   showTitle: PropTypes.bool
 };
 
 Amount.defaultProps = {
   amountType: "",
   onShowLoanCurrencies: () => {},
-  sendingCurrency: SOURCE_CURRENCY,
+  loanCurrency: DEFAULT_CURRENCY,
   showTitle: false
 };
 

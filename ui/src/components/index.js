@@ -3,10 +3,11 @@ import Keypad from "./Keypad";
 import Loader from "./Loader";
 import Navigation from "./Navigation";
 import PaymentDone from "./PaymentDone";
-import QuoteInfo from "./QuoteInfo";
+import LoanInfo from "./LoanInfo";
 import Recipients from "./Recipients";
 import SelectorButtons from "./SelectorButtons";
 import Amount from "./Amount";
+import Rate from "./Rate";
 import Splash from "./Splash";
 
 export {
@@ -15,9 +16,10 @@ export {
   Loader,
   Navigation,
   PaymentDone,
-  QuoteInfo,
+  LoanInfo,
   Recipients,
   SelectorButtons,
   Amount,
-  Splash
+  Splash,
+  Rate
 };

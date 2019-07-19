@@ -43,8 +43,9 @@ button {
   touch-action: manipulation;
 }
 
-.payment-container {
+.loan-container {
   display: flex;
+  padding-top: 20px;
   height: 100%;
   flex-direction: column;
   align-items: center;
@@ -68,7 +69,7 @@ button {
   font-family: 'Jura', sans-serif;
 }
 
-.fx-rate {
+.rate {
   color: #999da2;
   font-size: 12px;
   @include medium;
@@ -187,6 +188,7 @@ button {
   width: 100%;
   max-width: 500px;
   padding: 0px 16px;
+  text-align: center;
 }
 
 // Selector Buttons
@@ -242,8 +244,8 @@ button {
     min-height: 98px;
     padding-top: 22px;
     padding-bottom: 48px;
-    background-color: #007aff;
-    color: #fff;
+    background-color: $app-turquoise;
+    color: $app-light;
     cursor: pointer;
     font-size: 20px;
     line-height: 28px;
@@ -350,6 +352,34 @@ button {
 
 .currencies-enter-done {
   height: 50%;
+}
+
+.inputs {
+  width: 0px;
+}
+
+.inputs-enter {
+  width: 0px;
+}
+
+.inputs-exit {
+  width: 100%;
+}
+
+.inputs-enter.inputs-enter-active {
+  width: 100%;
+  -webkit-transition: width 500ms ease-in-out;
+  transition: width 500ms ease-in-out;
+}
+
+.inputs-exit.inputs-exit-active {
+  width: 0px;
+  -webkit-transition: width 500ms ease-in-out;
+  transition: width 500ms ease-in-out;
+}
+
+.inputs-enter-done {
+  width: 100%;
 }
 
 .recipient-title {
@@ -523,9 +553,10 @@ button {
 }
 
 // Quote info
-.quote-container {
+.loan-info-container {
   position: relative;
   width: 100%;
+  height: 100%;
   padding: 8px 16px;
 
   .recipient {
@@ -628,7 +659,7 @@ button {
 }
 
 // Execute Payment
-.execute-payment-container {
+.execute-loan-container {
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -1,28 +1,28 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { compose, applyMiddleware, createStore } from 'redux';
-import thunk from 'redux-thunk';
-import { persistStore, persistReducer } from 'redux-persist';
-import { PersistGate } from 'redux-persist/lib/integration/react';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import localForage from 'localforage';
-import { I18nextProvider } from 'react-i18next';
-import i18n from './i18n';
-import rootReducer from './rootReducer';
-import registerServiceWorker from './registerServiceWorker';
-import './shared/css/global.css';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { compose, applyMiddleware, createStore } from "redux";
+import thunk from "redux-thunk";
+import { persistStore, persistReducer } from "redux-persist";
+import { PersistGate } from "redux-persist/lib/integration/react";
+import { composeWithDevTools } from "redux-devtools-extension";
+import localForage from "localforage";
+import { I18nextProvider } from "react-i18next";
+import i18n from "./i18n";
+import rootReducer from "./rootReducer";
+import registerServiceWorker from "./registerServiceWorker";
+import "./shared/css/global.css";
 
-import App from './containers/App';
+import App from "./containers/App";
 
-require('typeface-roboto');
-require('typeface-roboto-mono');
+require("typeface-roboto");
+require("typeface-roboto-mono");
 
 window.scrollTo(0, 1);
 
-const isDevelopment = process.env.NODE_ENV === 'development';
+const isDevelopment = process.env.NODE_ENV === "development";
 const persistConfig = {
-  key: 'xvia_demo',
+  key: "xvia_demo",
   storage: localForage
 };
 
@@ -30,7 +30,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const middlewarePackeges = [thunk];
 if (isDevelopment) {
-  const { logger } = require('redux-logger'); // eslint-disable-line global-require
+  const { logger } = require("redux-logger"); // eslint-disable-line global-require
   middlewarePackeges.push(logger);
 }
 const middleware = applyMiddleware(...middlewarePackeges);
@@ -54,7 +54,7 @@ const renderApp = () => {
         </PersistGate>
       </Provider>
     </I18nextProvider>,
-    document.getElementById('xvia-demo')
+    document.getElementById("demo")
   );
 };
 
@@ -62,7 +62,7 @@ const renderApp = () => {
 // < IE11
 if (!Intl || !Map || !Set) {
   if (!Promise) {
-    require('es6-promise/auto'); // eslint-disable-line global-require
+    require("es6-promise/auto"); // eslint-disable-line global-require
   }
   // Webpack parses the inside of require.ensure at build time to know that intl
   // should be bundled separately. You could get the same effect by passing
@@ -70,9 +70,9 @@ if (!Intl || !Map || !Set) {
   require.ensure([], () => {
     // Ensure only makes sure the module has been downloaded and parsed.
     // Now we actually need to run it to install the polyfill.
-    require('intl'); // eslint-disable-line global-require
-    require('raf'); // eslint-disable-line global-require
-    require('core-js'); // eslint-disable-line global-require
+    require("intl"); // eslint-disable-line global-require
+    require("raf"); // eslint-disable-line global-require
+    require("core-js"); // eslint-disable-line global-require
 
     // Carry on
     renderApp();
