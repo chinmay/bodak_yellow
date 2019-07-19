@@ -1,3 +1,4 @@
+const AqfrNetworkClient = require('aqfr.network.client');
 const RippleAPI = require('ripple-lib').RippleAPI;
 var express = require("express");
 var bodyParser = require('body-parser');
@@ -23,6 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 //array to store all borrowers & lenders
 var borrowers = new Map();
 var lenders = new Map();
+var matches = new Map();
 
 app.listen(port, () => {
     console.log("Server running on port:", port);
@@ -68,6 +70,10 @@ app.get("/api/borrowers", (req, res, next) => {
 
 app.get("/api/lenders", (req, res, next) => {
     res.json(Array.from(lenders));
+});
+
+app.get("/api/matches", (req, res, next) => {
+    res.json(Array.from(matches));
 });
 
 app.get("/api/match/lender", async (req, res, next) => {
@@ -146,6 +152,7 @@ async function setUpMultisignAccount(borrower, lender) {
     //console.log(signed);
     const result = await api.submit(signed.signedTransaction);
     console.log(result);
+    matches.set(account.address, result)
     return result;
 }
 
@@ -166,3 +173,22 @@ function create_UUID() {
     });
     return uuid;
 }
+/*
+const dog = new AqfrNetworkClient('sendmoneyfast', 'password');
+dog.on('message', function (msg) {
+    console.log('RECEVIED:' + JSON.stringify(msg));
+    if (msg.msg.text === '! status') {
+        dog.sendMessage(msg.msg.sender.user_id, JSON.stringify(dog.aqfr2.sign({ msg: 'Wadda ya mean!!!' })));
+    }
+    else {
+        dog.sendMessage(msg.msg.sender.user_id, 'Wadda ya mean!!!');
+    }
+
+});
+
+dog.init().then(function (response) {
+    console.log('init response:' + JSON.stringify(response));
+
+}).catch(function (error) {
+    console.log('sad face:' + error);
+});*/
