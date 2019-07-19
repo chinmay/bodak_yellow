@@ -1,0 +1,139 @@
+// ONLY RE-USABLE VARIABLES AND MIXINS
+
+// View breakpoints
+$phone-upper-boundary: 375px;
+$tablet-portrait-upper-boundary: 600px;
+$tablet-landscape-upper-boundary: 900px;
+$desktop-upper-boundary: 1200px;
+
+// Minimum height and width
+$min-height: 667px;
+$min-width: 375px;
+
+// Core Colors
+$app-background: #3b475b;
+$app-light: #FEFCFD;
+$app-turquoise: #52D1DC;
+
+// Colors
+$black-100: #171c21;
+$black-90: #23292f;
+$black-80: #3b4147;
+$black-70: #53585d;
+$black-60: #6b7075;
+$black-50: #999da2;
+$black-40: #b1b5ba;
+$black-30: #c9cdd1;
+$black-20: #e1e4e8;
+$black-10: #f5f7f9;
+$blue: #0f72e5;
+$dark-blue: #005dca;
+$navy: #0d294e;
+$green: #2bcb96;
+$light-green: #d5f0e9;
+$orange: #f90;
+$red: #f23548;
+$light-red: #fddfe2;
+$magenta: #f52a79;
+$violet: #be05d8;
+$purple: #691fdd;
+$shadows: #23292f;
+$white: #fff;
+
+// Currency colors
+$CURRENCY_DEFAULT: #aedbf7;
+$XRP_KRW: #0f72e5;
+$XRP_USD: #2bcb96;
+$XRP_BTC: #f90;
+$XRP_ETH: #53585d;
+$XRP_USDT: #91ffdb;
+$XRP_INR: #ff8000;
+$XRP_JPY: #691fdd;
+$XRP_AUD: #ffcd00;
+$XRP_MXN: #c74444;
+$XRP_THB: #ed1c24;
+$XRP_CNY: #f23548;
+$XRP_IDR: #ce1126;
+$XRP_RUB: #0039a6;
+$XRP_BITCNY: #f88064;
+$XRP_ZAR: #000;
+$XRP_XLM: #04b5e5;
+$XRP_LTC: #b8b8b8;
+$XRP_ADA: #2d71d0;
+$XRP_BRL: #009b3a;
+$XRP_BCH: #c8e6ad;
+$XRP_ETC: #42967b;
+$XRP_REP: #551a8b;
+$XRP_GBP: #00247d;
+$XRP_QAU: #0f73c3;
+$XRP_UAH: #ffd700;
+$XRP_CND: #00aae4;
+$XRP_EUR: #ffd600;
+$XRP_XRP: #0a93eb;
+$XRP_CAD: #ca3103;
+$XRP_OTHERS: #f52a79;
+
+// Font wights
+@mixin thin {
+  font-weight: 100;
+}
+
+@mixin light {
+  font-weight: 300;
+}
+
+@mixin regular {
+  font-weight: 400;
+}
+
+@mixin medium {
+  font-weight: 500;
+}
+
+@mixin bold {
+  font-weight: 700;
+}
+
+@mixin black {
+  font-weight: 900;
+}
+
+@mixin mono {
+  font-family: 'Chathura', sans-serif;
+}
+
+// View bucket sizes
+@mixin for-size($range) {
+  @if $range == phone-only {
+    @media (max-width: $phone-upper-boundary) {
+      @content;
+    }
+  } @else if $range == tablet-portrait-up {
+    @media (min-width: $phone-upper-boundary) {
+      @content;
+    }
+  } @else if $range == tablet-landscape-up {
+    @media (min-width: $tablet-portrait-upper-boundary) {
+      @content;
+    }
+  } @else if $range == desktop-up {
+    @media (min-width: $tablet-landscape-upper-boundary) {
+      @content;
+    }
+  } @else if $range == big-desktop-up {
+    @media (min-width: $desktop-upper-boundary) {
+      @content;
+    }
+  }
+}
+
+// KeyFrames
+@keyframes black-10-fade {
+  from {
+    background-color: $black-10;
+  }
+
+  to {
+    background-color: $white;
+  }
+}

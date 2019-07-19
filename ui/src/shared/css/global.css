@@ -1,0 +1,41 @@
+@keyframes black-10-fade {
+  from {
+    background-color: #f5f7f9; }
+  to {
+    background-color: #fff; } }
+
+body,
+input {
+  padding: 0px;
+  margin: 0px;
+  background-color: #fff;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  font-style: normal;
+  letter-spacing: 0.5px;
+  line-height: 24px; }
+
+button {
+  font-family: 'Rajdhani', sans-serif; }
+
+.clear {
+  clear: both; }
+
+* {
+  outline: none !important; }
+
+svg.react-stockchart {
+  z-index: auto !important;
+  left: 0px; }
+
+div.react-stockchart div {
+  z-index: auto !important; }
+
+.async-component-error {
+  margin: 0px auto;
+  color: #b1b5ba;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  font-weight: 700; }

@@ -1,0 +1,46 @@
+// ONLY GLOBAL CSS, KEEP IT TO MINIMAL
+// CSS SHOULD BE SCOPPED TO COMPONENT
+@import './variables.scss';
+
+body,
+input {
+  padding: 0px;
+  margin: 0px;
+  background-color: $white;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  font-style: normal;
+  letter-spacing: 0.5px;
+  line-height: 24px;
+}
+
+button {
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.clear {
+  clear: both;
+}
+
+* {
+  outline: none !important; // remove blue outline in click and focus
+}
+
+svg.react-stockchart {
+  z-index: auto !important;
+  left: 0px;
+}
+
+div.react-stockchart div {
+  z-index: auto !important;
+}
+
+.async-component-error {
+  margin: 0px auto;
+  color: $black-40;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  @include bold;
+}
