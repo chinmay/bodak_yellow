@@ -1,6 +1,9 @@
 import * as actionTypes from "./actionTypes";
 
 export const initialState = {
+  lender: null,
+  borrower: null,
+  loan: null,
   fxData: {},
   logData: {},
   paymentData: {},

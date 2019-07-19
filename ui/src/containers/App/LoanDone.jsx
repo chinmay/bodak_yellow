@@ -12,25 +12,6 @@ import SyntaxHighlighter from "react-syntax-highlighter";
 import { railscasts } from "react-syntax-highlighter/styles/hljs";
 
 class LoanDone extends React.Component {
-  componentDidMount() {
-    const { actions, history, lender, borrower } = this.props;
-
-    if (lender) {
-      actions
-        .matchBorrowers({ id: lender.id })
-        .then(() => history.push("./loan-done"));
-    }
-
-    if (borrower) {
-      actions
-        .matchLenders({ id: borrower.id })
-        .then(() => history.push("./loan-done"));
-    }
-
-    // Timeout of polling after 30secs
-    setTimeout(() => history.push("./match-loan"), 20000);
-  }
-
   render() {
     const { lender, borrower, loan, t } = this.props;
 

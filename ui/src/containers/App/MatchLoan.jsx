@@ -26,7 +26,7 @@ class LoanMatch extends React.Component {
     }
 
     // Timeout of polling after 10secs
-    setTimeout(() => history.push("./match-loan"), 10000);
+    setTimeout(() => history.push("./loan-done"), 20000);
   }
 
   render() {
