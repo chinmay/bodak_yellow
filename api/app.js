@@ -70,7 +70,7 @@ app.get("/api/match/lender", (req, res, next) => {
 
 app.get("/api/match/borrower", (req, res, next) => {
     // you are lender, searching for a matching borrower
-    var lender_id = req.body.id; // should be a borrower_id
+    var lender_id = req.body.id; // should be a lender_id
     lender = borrowers.get(lender_id);
     var matching_amount = lender.amount;
     console.log("find borrower with amount: ", matching_amount);
