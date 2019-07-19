@@ -2,7 +2,7 @@ import axios from "axios";
 import * as actionTypes from "./actionTypes";
 
 export const createLender = params => dispatch => {
-  const url = `/api/create_lender`;
+  const url = `http://localhost:8080/api/lend`;
   dispatch({ type: actionTypes.CREATE_LENDER_START });
 
   return axios
@@ -20,7 +20,7 @@ export const createLender = params => dispatch => {
 };
 
 export const createBorrower = params => dispatch => {
-  const url = `/api/create_borrower`;
+  const url = `http://localhost:8080/api/borrow`;
   dispatch({ type: actionTypes.CREATE_BORROWER_START });
 
   return axios
@@ -38,7 +38,7 @@ export const createBorrower = params => dispatch => {
 };
 
 export const getLoans = params => dispatch => {
-  const url = `/api/create_borrower`;
+  const url = `http://localhost:8080/api/create_borrower`;
   dispatch({ type: actionTypes.GET_LOANS_START });
 
   return axios
@@ -52,6 +52,42 @@ export const getLoans = params => dispatch => {
     })
     .catch(error => {
       dispatch({ type: actionTypes.GET_LOANS_FAIL, data: error });
+    });
+};
+
+export const getLenders = params => dispatch => {
+  const url = `/api/lenders`;
+  dispatch({ type: actionTypes.GET_MARKETPLACE_LOGS_START });
+
+  return axios
+    .get(url, { params })
+    .then(response => {
+      dispatch({
+        type: actionTypes.GET_MARKETPLACE_LOGS_DONE,
+        data: response.data[0]
+      });
+      return Promise.resolve(response.data[0]);
+    })
+    .catch(error => {
+      dispatch({ type: actionTypes.GET_MARKETPLACE_LOGS_FAIL, data: error });
+    });
+};
+
+export const getBorrowers = params => dispatch => {
+  const url = `/api/lenders`;
+  dispatch({ type: actionTypes.GET_MARKETPLACE_LOGS_START });
+
+  return axios
+    .get(url, { params })
+    .then(response => {
+      dispatch({
+        type: actionTypes.GET_MARKETPLACE_LOGS_DONE,
+        data: response.data[0]
+      });
+      return Promise.resolve(response.data[0]);
+    })
+    .catch(error => {
+      dispatch({ type: actionTypes.GET_MARKETPLACE_LOGS_FAIL, data: error });
     });
 };
 

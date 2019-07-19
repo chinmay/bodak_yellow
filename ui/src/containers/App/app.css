@@ -348,16 +348,12 @@ button {
   .amount-container .button {
     width: 56px;
     height: 40px;
-    padding: 10px 0px;
-    background-color: #EA70C6;
+    padding: 3px 0px;
+    background-color: #52D1DC;
     border-radius: 2px;
-    color: #fff;
+    color: #FEFCFD;
     cursor: pointer;
-    font-size: 20px;
-    line-height: 20px;
-    text-align: center;
-    font-weight: 700;
-    font-family: 'Chathura', sans-serif; }
+    text-align: center; }
 
 .transactions-container {
   position: absolute;

@@ -38,7 +38,7 @@ export const LENDER_OR_BORROWER = {
   BORROWER: "BORROWER"
 };
 
-export const DESTINATION_CURRENCIES = ["SGD", "INR", "MXN"];
+export const DESTINATION_CURRENCIES = ["XRP", "INR", "MXN"];
 export const SOURCE_CURRENCY = "USD";
 
 export const LANGUAGE = "en-US";

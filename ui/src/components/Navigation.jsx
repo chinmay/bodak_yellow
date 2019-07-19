@@ -36,7 +36,7 @@ class Navigation extends React.PureComponent {
         </div>
 
         <div className="navigation-right">
-          <div className="transactions-icon-container">
+          {/* <div className="transactions-icon-container">
             {currentStep === LOAN_STEPS[0] && (
               <div className="transactions-icon-container">
                 <div className="transactions-icon">
@@ -67,7 +67,7 @@ class Navigation extends React.PureComponent {
                 )}
               </div>
             )}
-          </div>
+          </div> */}
         </div>
       </div>
     );

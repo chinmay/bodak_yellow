@@ -19,7 +19,7 @@ const Amount = props => {
             maximumFractionDigits: 2
           })}
         </p>
-        <button className="currency" onClick={onShowLoanCurrencies}>
+        <button className="button currency" onClick={onShowLoanCurrencies}>
           {sendingCurrency}
         </button>
       </section>
