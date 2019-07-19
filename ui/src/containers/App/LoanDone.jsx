@@ -29,7 +29,7 @@ class LoanDone extends React.Component {
           }}
           language="json"
         >
-          {JSON.stringify(loan, null, "\t")}
+          {JSON.stringify(loan.tx_json, null, "\t")}
         </SyntaxHighlighter>
       </div>
     );
