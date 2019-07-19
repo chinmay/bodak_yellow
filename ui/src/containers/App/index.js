@@ -4,6 +4,7 @@ import CreateLoan from "./CreateLoan";
 import Loans from "./Loans";
 import UnderHood from "./UnderHood";
 import MatchLoan from "./MatchLoan";
+import LoanDone from "./LoanDone";
 import { Splash } from "../../components";
 import "./app.css";
 
@@ -26,6 +27,15 @@ const App = () => (
         render={props => (
           <div className="demo-app-container">
             <MatchLoan {...props} />
+          </div>
+        )}
+      />
+      <Route
+        exact
+        path="/loan-done"
+        render={props => (
+          <div className="demo-app-container">
+            <LoanDone {...props} />
           </div>
         )}
       />

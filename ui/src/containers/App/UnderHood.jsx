@@ -1,20 +1,20 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { railscasts } from 'react-syntax-highlighter/styles/hljs';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import { translate } from 'react-i18next';
-import { bindActionCreators } from '../../../node_modules/redux';
+import React from "react";
+import PropTypes from "prop-types";
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { railscasts } from "react-syntax-highlighter/styles/hljs";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import { translate } from "react-i18next";
+import { bindActionCreators } from "../../../node_modules/redux";
 
-import { getMarketplaceLogs } from './actions';
-import { poll } from '../../shared/utils';
+import { getMarketplaceLogs } from "./actions";
+import { poll } from "../../shared/utils";
 
-import xrapidVideo1 from '../../shared/images/xrapid1.gif';
-import xrapidVideo2 from '../../shared/images/xrapid2.gif';
-import xrapidVideo3 from '../../shared/images/xrapid3.gif';
-import xrapidVideo4 from '../../shared/images/xrapid4.gif';
-import xrapidVideo5 from '../../shared/images/xrapid5.gif';
+import xrapidVideo1 from "../../shared/images/xrapid1.gif";
+import xrapidVideo2 from "../../shared/images/xrapid2.gif";
+import xrapidVideo3 from "../../shared/images/xrapid3.gif";
+import xrapidVideo4 from "../../shared/images/xrapid4.gif";
+import xrapidVideo5 from "../../shared/images/xrapid5.gif";
 
 const XRAPID_VIDEO_SEQUENCE = [
   xrapidVideo1,
@@ -28,7 +28,7 @@ const UnderHoodLaunchPage = ({ onStartLogs, t }) => (
   <div className="under-hood-start-container">
     <div className="row">
       <button className="button" onClick={onStartLogs}>
-        {t('start').toUpperCase()}
+        {t("start").toUpperCase()}
       </button>
     </div>
   </div>
@@ -58,24 +58,24 @@ class UnderHood extends React.Component {
     poll(
       () =>
         actions.getMarketplaceLogs().then(() => {
-          throw new Error('continue polling');
+          throw new Error("continue polling");
         }),
       Infinity,
       3000
     );
 
-    document.addEventListener('keydown', this.handleShowVideo, false);
+    document.addEventListener("keydown", this.handleShowVideo, false);
   }
 
   componentWillUnmount() {
-    document.removeEventListener('keydown', this.escFunction, false);
+    document.removeEventListener("keydown", this.escFunction, false);
   }
 
   handleShowVideo = e => {
     e.preventDefault();
     const { isVideoActive, currentVideoStep, showLogs } = this.state;
 
-    if (e.code === 'Space') {
+    if (e.code === "Space") {
       this.setState({
         isVideoActive: !isVideoActive,
         currentVideoStep: 0
@@ -85,16 +85,18 @@ class UnderHood extends React.Component {
       if (this.gif) this.gif.src = this.xrapidVideo1;
     }
 
-    if (e.code === 'Enter') {
+    if (e.code === "Enter") {
       const newVideoStep =
-        currentVideoStep + 1 < XRAPID_VIDEO_SEQUENCE.length ? currentVideoStep + 1 : 0;
+        currentVideoStep + 1 < XRAPID_VIDEO_SEQUENCE.length
+          ? currentVideoStep + 1
+          : 0;
 
       this.setState({
         currentVideoStep: newVideoStep
       });
     }
 
-    if (e.code === 'Escape') {
+    if (e.code === "Escape") {
       this.setState({
         showLogs: !showLogs
       });
@@ -113,7 +115,7 @@ class UnderHood extends React.Component {
     const { logData, t } = this.props;
     const { isVideoActive, currentVideoStep, showLogs } = this.state;
 
-    const { request = '', response = '' } = logData;
+    const { request = "", response = "" } = logData;
 
     if (!showLogs) {
       return <UnderHoodLaunchPage onStartLogs={this.handleStartLogs} t={t} />;
@@ -133,35 +135,39 @@ class UnderHood extends React.Component {
         )}
 
         <section className="req-res-header">
-          <p className="title">{t('request').toUpperCase()}</p>
+          <p className="title">{t("request").toUpperCase()}</p>
 
-          <p className="title">{t('response').toUpperCase()}</p>
+          <p className="title">{t("response").toUpperCase()}</p>
         </section>
         <section className="req-res-container">
           <section className="request-container">
             <SyntaxHighlighter
               style={railscasts}
               customStyle={{
-                fontSize: '18px',
-                lineHeight: '20px',
-                backgroundColor: '#000',
-                overflowWrap: 'break-word',
-                wordWrap: 'break-word',
-                hyphens: 'auto'
+                fontSize: "18px",
+                lineHeight: "20px",
+                backgroundColor: "#000",
+                overflowWrap: "break-word",
+                wordWrap: "break-word",
+                hyphens: "auto"
               }}
               language="json"
             >
-              {JSON.stringify(request, null, '\t')}
+              {JSON.stringify(request, null, "\t")}
             </SyntaxHighlighter>
           </section>
 
           <section className="response-container">
             <SyntaxHighlighter
               style={railscasts}
-              customStyle={{ fontSize: '18px', lineHeight: '20px', backgroundColor: '#000' }}
+              customStyle={{
+                fontSize: "18px",
+                lineHeight: "20px",
+                backgroundColor: "#000"
+              }}
               language="json"
             >
-              {JSON.stringify(response, null, '\t')}
+              {JSON.stringify(response, null, "\t")}
             </SyntaxHighlighter>
           </section>
         </section>

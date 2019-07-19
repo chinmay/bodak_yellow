@@ -14,15 +14,19 @@ class LoanMatch extends React.Component {
     const { actions, history, lender, borrower } = this.props;
 
     if (lender) {
-      actions.matchBorrowers(lender.id).then(() => history.push("./loan-done"));
+      actions
+        .matchBorrowers({ id: lender.id })
+        .then(() => history.push("./loan-done"));
     }
 
     if (borrower) {
-      actions.matchLenders(borrower.id).then(() => history.push("./loan-done"));
+      actions
+        .matchLenders({ id: borrower.id })
+        .then(() => history.push("./loan-done"));
     }
 
-    // Timeout of polling after 30secs
-    setTimeout(() => history.push("./match-loan"), 20000);
+    // Timeout of polling after 10secs
+    setTimeout(() => history.push("./match-loan"), 10000);
   }
 
   render() {
@@ -46,7 +50,7 @@ class LoanMatch extends React.Component {
         </div>
 
         <div className="amount-container">
-          <p className="rate">{rate}%</p>
+          <p className="rate">{rate}% APR</p>
         </div>
 
         <section className="recipient-container">

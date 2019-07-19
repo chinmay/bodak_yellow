@@ -91,12 +91,12 @@ export const getBorrowers = data => dispatch => {
     });
 };
 
-export const matchLenders = data => dispatch => {
+export const matchLenders = params => dispatch => {
   const url = `/api/match/lender`;
   dispatch({ type: actionTypes.MATCH_LENDERS_START });
 
   return axios
-    .get(url, { ...data })
+    .get(url, { params })
     .then(response => {
       dispatch({
         type: actionTypes.MATCH_LENDERS_DONE,
@@ -109,13 +109,12 @@ export const matchLenders = data => dispatch => {
     });
 };
 
-export const matchBorrowers = data => dispatch => {
+export const matchBorrowers = params => dispatch => {
   const url = `/api/match/borrower`;
   dispatch({ type: actionTypes.MATCH_BORROWERS_START });
 
-  console.log(data);
   return axios
-    .get(url, { ...data })
+    .get(url, { params })
     .then(response => {
       dispatch({
         type: actionTypes.MATCH_BORROWERS_DONE,

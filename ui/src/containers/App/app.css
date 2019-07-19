@@ -537,7 +537,7 @@ button {
     display: flex;
     overflow: hidden;
     width: 100%;
-    height: 150px;
+    height: 300px;
     align-items: center;
     justify-content: center; }
     .execute-loan-container .recipient-container .recipient-icon {

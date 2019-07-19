@@ -2,7 +2,7 @@ import LoanCurrencies from "./LoanCurrencies";
 import Keypad from "./Keypad";
 import Loader from "./Loader";
 import Navigation from "./Navigation";
-import PaymentDone from "./PaymentDone";
+import LoanDone from "./LoanDone";
 import LoanInfo from "./LoanInfo";
 import Recipients from "./Recipients";
 import SelectorButtons from "./SelectorButtons";
@@ -15,7 +15,7 @@ export {
   Keypad,
   Loader,
   Navigation,
-  PaymentDone,
+  LoanDone,
   LoanInfo,
   Recipients,
   SelectorButtons,
